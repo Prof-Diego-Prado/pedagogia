@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PedagogIA - IA para Educadores com Diego</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        dark: '#0a0a0a', // Preto profundo estilo palco
+                        darker: '#000000',
+                        primary: '#E62B1E', // Vermelho TED
+                        primaryHover: '#b91c1c', // Vermelho escuro
+                        secondary: '#FFC107', // Amarelo/Dourado alerta
+                        accent: '#FACC15', // Amarelo vibrante
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: theme('colors.dark'); color: #f3f4f6; }
+        .glass-card {
+            background: rgba(25, 25, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #FFC107, #E62B1E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .border-gradient {
+            position: relative;
+        }
+        .border-gradient::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #E62B1E, #FFC107);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .btn-primary {
+            background: theme('colors.primary');
+            box-shadow: 0 4px 14px 0 rgba(230, 43, 30, 0.39);
+        }
+        .btn-primary:hover {
+            background: theme('colors.primaryHover');
+            box-shadow: 0 6px 20px rgba(230, 43, 30, 0.23);
+            transform: translateY(-2px);
+        }
+        /* Garantindo legibilidade extra em textos cinzas */
+        .text-gray-400 { color: #9ca3af !important; }
+        .text-gray-300 { color: #d1d5db !important; }
+
+        /* Custom Scrollbar para os Depoimentos */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,193,7,0.5); }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-card border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-secondary text-2xl"></i>
+                    <span class="font-bold text-xl tracking-tight text-white">Pedagog<span class="text-primary">IA</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#metodo" class="text-gray-300 hover:text-white hover:text-primary transition font-medium">O Método</a>
+                    <a href="#ferramentas" class="text-gray-300 hover:text-white hover:text-primary transition font-medium">Ferramentas</a>
+                    <a href="#sobre" class="text-gray-300 hover:text-white hover:text-primary transition font-medium">O Mentor</a>
+                </div>
+                <div>
+                    <a href="#oferta" class="btn-primary text-white px-6 py-2.5 rounded-full font-semibold transition-all text-sm">
+                        Garantir Vaga
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-darker">
+        <!-- Background Effects Minimalistas -->
+        <div class="absolute top-[10%] left-[50%] -translate-x-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/10 mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+                <span class="text-sm font-semibold text-gray-200 uppercase tracking-wider">Do fundamental ao ensino superior</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-white">
+                A IA não substitui professores, <br class="hidden lg:block">
+                ela nos libera para sermos <span class="text-gradient">mais humanos.</span>
+            </h1>
+            
+            <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+                Descubra como dominar o ChatGPT, Gemini e NotebookLM para criar aulas envolventes, avaliações precisas e <strong class="text-white font-bold border-b-2 border-primary">reduzir consideravelmente</strong> o seu tempo de planejamento.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#oferta" class="btn-primary text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-power-off"></i> Quero explorar melhor os recursos da IA
+                </a>
+                <a href="#metodo" class="glass-card hover:bg-white/10 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center gap-3 border border-white/10">
+                    <i class="fa-solid fa-play text-secondary"></i> Ver como funciona
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section (Agitação da Dor) -->
+    <section class="py-20 bg-dark border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">A realidade que ninguém te conta na faculdade</h2>
+                <p class="text-gray-400 text-lg">Você ama ensinar, mas a burocracia está sugando sua energia.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-black/40 border border-white/5 p-8 rounded-2xl text-center hover:border-primary/50 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-red-900/30 text-primary rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                        <i class="fa-solid fa-calendar-xmark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Finais de Semana Perdidos</h3>
+                    <p class="text-gray-400 leading-relaxed">Horas intermináveis elaborando avaliações, adaptando materiais e criando roteiros do zero ao invés de descansar.</p>
+                </div>
+                <div class="bg-black/40 border border-white/5 p-8 rounded-2xl text-center hover:border-secondary/50 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-yellow-900/30 text-secondary rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                        <i class="fa-solid fa-battery-quarter"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Sobrecarga Mental</h3>
+                    <p class="text-gray-400 leading-relaxed">Turmas heterogêneas exigem abordagens diferentes, e planejar tudo isso sozinho gera um desgaste absurdo.</p>
+                </div>
+                <div class="bg-black/40 border border-white/5 p-8 rounded-2xl text-center hover:border-primary/50 transition-colors duration-300">
+                    <div class="w-16 h-16 bg-red-900/30 text-primary rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">O Medo de Ficar para Trás</h3>
+                    <p class="text-gray-400 leading-relaxed">A tecnologia avança rápido. Ver os alunos usando ferramentas que você ainda não domina gera insegurança na sala.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Method Section -->
+    <section id="metodo" class="py-24 relative bg-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight text-white">80% da resposta depende do <span class="text-gradient">Prompt perfeito.</span></h2>
+                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                        Esqueça "perguntar coisas pro ChatGPT". O método PedagogIA foca na <strong>Estrutura P-CEP</strong>. Você vai aprender a dar comandos profissionais para que a IA gere conteúdos pedagógicos com precisão cirúrgica.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 rounded-lg bg-primary/20 text-primary flex items-center justify-center font-bold text-xl shrink-0 border border-primary/30">P</div>
+                            <div>
+                                <h4 class="font-bold text-lg text-white">Persona</h4>
+                                <p class="text-gray-400">Defina o papel exato que a IA deve assumir (ex: Professor de Matemática do 6º ano).</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 rounded-lg bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xl shrink-0 border border-secondary/30">C</div>
+                            <div>
+                                <h4 class="font-bold text-lg text-white">Contexto</h4>
+                                <p class="text-gray-400">Forneça o cenário real dos seus alunos e o desafio atual de aprendizagem.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 rounded-lg bg-primary/20 text-primary flex items-center justify-center font-bold text-xl shrink-0 border border-primary/30">E</div>
+                            <div>
+                                <h4 class="font-bold text-lg text-white">Especificação</h4>
+                                <p class="text-gray-400">Detalhe as restrições, tom de voz, linguagem e regras que a IA deve obedecer.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 rounded-lg bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xl shrink-0 border border-secondary/30">P</div>
+                            <div>
+                                <h4 class="font-bold text-lg text-white">Produto</h4>
+                                <p class="text-gray-400">O formato final prático e imediato que você precisa receber para usar na aula.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Terminal Code Block -->
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-[#0D0D0D] border border-white/10 rounded-2xl p-6 relative overflow-hidden shadow-2xl">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
+                        <div class="flex justify-between items-center mb-4 border-b border-white/10 pb-4">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-terminal text-gray-500"></i>
+                                <span class="font-mono text-sm text-gray-400">Terminal P-CEP em Ação</span>
+                            </div>
+                            <span class="text-xs text-black font-bold bg-secondary px-3 py-1 rounded-full">Resultado Imediato</span>
+                        </div>
+                        <div class="font-mono text-sm space-y-6">
+                            <div>
+                                <p class="text-gray-300 leading-relaxed">
+                                    <span class="text-secondary font-bold text-base">User:</span><br>
+                                    <span class="text-primary font-semibold">[P]</span> Assuma o papel de um professor de matemática de ensino fundamental II em uma turma de 6º ano.<br>
+                                    <span class="text-primary font-semibold">[C]</span> Os alunos estão com dificuldade em frações e precisam de uma revisão antes da prova bimestral.<br>
+                                    <span class="text-primary font-semibold">[E]</span> A linguagem deve ser clara e direta, sem jargões complexos, focando em problemas do dia a dia e situações reais.<br>
+                                    <span class="text-primary font-semibold">[P]</span> Crie uma atividade de revisão composta de 15 questões de múltipla escolha formatada e pronta para impressão em papel A4.
+                                </p>
+                            </div>
+                            <div class="pl-4 border-l-2 border-white/20 bg-white/5 p-4 rounded-r-lg">
+                                <p class="text-gray-200"><span class="text-primary font-bold">IA:</span> Olá, Professor! Entendido. Aqui está a atividade de revisão sobre Frações focada no cotidiano, pronta para impressão A4:</p>
+                                <p class="text-gray-300 mt-3 font-bold">ATIVIDADE DE REVISÃO - MATEMÁTICA (6º ANO)</p>
+                                <p class="text-gray-400 mt-2"><strong>1.</strong> João comprou uma pizza dividida em 8 pedaços iguais e comeu 3 pedaços. Qual fração representa a quantidade de pizza que João comeu?</p>
+                                <p class="text-gray-400 ml-4">A) 3/5<br>B) 3/8<br>C) 5/8<br>D) 8/3</p>
+                                <p class="text-gray-400 mt-2"><strong>2.</strong> Maria quer fazer um bolo e a receita pede 1/2 xícara de açúcar. Se ela quiser fazer o dobro da receita, quanto de açúcar precisará?</p>
+                                <p class="text-gray-500 mt-2 italic">[Gerando mais 13 questões perfeitamente formatadas + Gabarito do Professor em 4 segundos...]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Grid Section -->
+    <section id="ferramentas" class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">O seu Novo Arsenal Pedagógico</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Domine os assistentes mais avançados do mercado com um olhar focado puramente na educação e produtividade.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Tool 1 -->
+                <div class="bg-black/40 border border-white/5 p-8 rounded-2xl hover:border-primary/40 transition-all duration-300 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                            <i class="fa-solid fa-bolt text-black text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">ChatGPT</h3>
+                            <span class="text-sm font-medium text-primary uppercase tracking-wider">Preparação e Avaliação</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Seu assistente de escrita. Gere rascunhos, resolva o bloqueio criativo, crie exercícios com níveis de dificuldade ajustáveis e rubricas de avaliação precisas em segundos.</p>
+                    <ul class="text-sm text-gray-300 space-y-3">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-3"></i> Roteiros de Aula PCEP</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-3"></i> Ajuste de Tom e Complexidade</li>
+                    </ul>
+                </div>
+
+                <!-- Tool 2 -->
+                <div class="bg-black/40 border border-white/5 p-8 rounded-2xl hover:border-blue-500/40 transition-all duration-300 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                            <i class="fa-solid fa-sparkles text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Google Gemini</h3>
+                            <span class="text-sm font-medium text-blue-400 uppercase tracking-wider">Integração Total</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Perfeito para quem já usa o ecossistema Google. Exporte direto para o Docs ou Sheets. Entenda como analisar tabelas de notas e gerar relatórios de desempenho.</p>
+                    <ul class="text-sm text-gray-300 space-y-3">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-3"></i> Recurso Canvas (Não-linear)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-3"></i> Análise de Dados e Notas</li>
+                    </ul>
+                </div>
+
+                <!-- Tool 3 -->
+                <div class="bg-black/40 border border-white/5 p-8 rounded-2xl hover:border-green-500/40 transition-all duration-300 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-[#008375] flex items-center justify-center">
+                            <i class="fa-solid fa-book-open text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">NotebookLM</h3>
+                            <span class="text-sm font-medium text-green-400 uppercase tracking-wider">Seus Materiais, Sua IA</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Faça upload dos seus PDFs, artigos e livros da escola. A IA responderá com base <span class="text-white font-semibold">estritamente</span> no seu material, eliminando "alucinações".</p>
+                    <ul class="text-sm text-gray-300 space-y-3">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-3"></i> Transformação em Podcast (Audio)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-3"></i> Geração de Flashcards automáticos</li>
+                    </ul>
+                </div>
+
+                <!-- Tool 4 -->
+                <div class="bg-black/40 border border-white/5 p-8 rounded-2xl hover:border-gray-400/50 transition-all duration-300 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center">
+                            <i class="fa-solid fa-magnifying-glass text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Perplexity</h3>
+                            <span class="text-sm font-medium text-gray-400 uppercase tracking-wider">Pesquisa Acadêmica</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Vá além do buscador comum. Ferramenta de pesquisa acadêmica profunda que entrega respostas com referências bibliográficas reais e fontes verificáveis.</p>
+                    <ul class="text-sm text-gray-300 space-y-3">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-3"></i> Fontes Confiáveis e Links</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-secondary mr-3"></i> Base para artigos e mestrado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority/Mentor Section -->
+    <section id="sobre" class="py-24 relative overflow-hidden bg-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Composição de Imagens -->
+                <div class="lg:w-5/12 relative flex justify-center">
+                    
+                    <div class="relative w-full max-w-sm">
+                        <!-- Imagem Principal (Falando/TED Style) -->
+                        <img src="perfil1.png" alt="Diego Mentor" class="w-full rounded-2xl shadow-2xl border border-white/10 relative z-20">
+                        
+                        <!-- Imagem Secundária (Sorriso/Close) -->
+                        <img src="perfil2.png" alt="Diego Sorrindo" class="absolute -bottom-10 -right-8 w-40 h-40 md:w-48 md:h-48 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] border-4 border-darker object-cover z-30">
+                        
+                        <!-- Grafismo TED -->
+                        <div class="absolute -top-6 -left-6 w-24 h-24 border-t-4 border-l-4 border-primary z-10"></div>
+                        <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-2xl z-0"></div>
+                    </div>
+                </div>
+
+                <div class="lg:w-7/12 mt-12 lg:mt-0">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Do chão de escola para a <span class="text-gradient">vanguarda da educação.</span></h2>
+                    
+                    <div class="space-y-6 text-gray-300 text-lg leading-relaxed mb-10">
+                        <p>
+                            Quem vai te guiar nessa jornada não é um teórico distante de uma startup de tecnologia, que não entende o que é ter 40 alunos em uma sala de aula. <strong>Eu sou professor.</strong>
+                        </p>
+                        <p>
+                            Minha missão é unir a vivência real da sala de aula com a pesquisa acadêmica mais avançada, ensinando você a usar a tecnologia de forma ética e prática para recuperar seu tempo livre e elevar a qualidade das suas aulas.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-black/50 p-6 rounded-2xl border border-white/5">
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-graduation-cap text-primary mt-1 text-xl"></i>
+                            <div>
+                                <span class="text-white font-bold block">História</span>
+                                <span class="text-gray-400 text-sm">Graduado pela Unioeste, atuante na rede pública e privada.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-book-bookmark text-secondary mt-1 text-xl"></i>
+                            <div>
+                                <span class="text-white font-bold block">Tecnologias Educacionais</span>
+                                <span class="text-gray-400 text-sm">Mestrando pela Universidade Estadual de Maringá (UEM).</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-network-wired text-primary mt-1 text-xl"></i>
+                            <div>
+                                <span class="text-white font-bold block">IA e Dados</span>
+                                <span class="text-gray-400 text-sm">Graduando em Inteligência Artificial aplicada.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-chalkboard-user text-secondary mt-1 text-xl"></i>
+                            <div>
+                                <span class="text-white font-bold block">Educação Especial & Robótica</span>
+                                <span class="text-gray-400 text-sm">Especialista em Metodologia e Robótica Educacional.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Break (Estilo TED) -->
+    <section class="py-20 bg-primary relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+                "O futuro da educação pública é humano, <br>potencializado pela tecnologia."
+            </h2>
+            <div class="w-16 h-1 bg-secondary mx-auto mt-8"></div>
+        </div>
+    </section>
+
+    <!-- Pricing / Offer Section -->
+    <section id="oferta" class="py-24 relative bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Sua Paz de Espírito na Sala de Aula</h2>
+                <p class="text-gray-400 text-lg">Escolha o plano que melhor se adapta a você e comece hoje.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                
+                <!-- Coluna dos Planos (Ocupa 2/3 do espaço) -->
+                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Plano Recorrente -->
+                    <div class="bg-black/60 border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300">
+                        <h3 class="text-2xl font-bold text-white mb-2">Assinatura Mensal</h3>
+                        <p class="text-gray-400 mb-8 h-12">Acesso básico à plataforma e comunidade com pagamento flexível.</p>
+                        
+                        <div class="mb-8 border-b border-white/10 pb-8">
+                            <span class="text-xl font-bold text-gray-400">R$</span>
+                            <span class="text-5xl font-extrabold text-white">29</span><span class="text-xl font-bold text-gray-400">,90</span>
+                            <span class="text-gray-500 text-sm block mt-1">/mês (Cartão ou Pix)</span>
+                        </div>
+
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gray-500 mt-1"></i>
+                                <span class="text-gray-300">Acesso completo ao Curso</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gray-500 mt-1"></i>
+                                <span class="text-gray-300">Biblioteca básica de Prompts</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-gray-500 mt-1"></i>
+                                <span class="text-gray-300">Certificado de Conclusão</span>
+                            </li>
+                        </ul>
+
+                        <a href="#" class="block w-full bg-white/10 hover:bg-white/20 text-white py-4 rounded-xl font-bold text-center transition-all border border-white/10">
+                            Assinar Mensal
+                        </a>
+                    </div>
+
+                    <!-- Plano Anual (Destaque) -->
+                    <div class="border-gradient rounded-3xl p-8 relative bg-darker shadow-[0_0_50px_rgba(230,43,30,0.15)] transform md:-translate-y-4">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary to-secondary text-darker font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wide">
+                            Melhor Custo-Benefício
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-white mb-2">Acesso Anual Premium</h3>
+                        <p class="text-gray-400 mb-8 h-12">A experiência completa com mentoria e networking. <strong class="text-secondary">20% de Desconto.</strong></p>
+                        
+                        <div class="mb-8 border-b border-white/10 pb-8">
+                            <div class="text-gray-500 line-through text-sm mb-1">De R$ 99,90 por:</div>
+                            <span class="text-xl font-bold text-gray-300">R$</span>
+                            <span class="text-6xl font-extrabold text-white tracking-tighter">79</span><span class="text-xl font-bold text-gray-300">,92</span>
+                            <span class="text-secondary text-sm font-semibold block mt-1">Compra Única (1 Ano de Acesso)</span>
+                        </div>
+
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-star text-secondary mt-1"></i>
+                                <span class="text-white font-medium">Acesso à Comunidade VIP e Plataforma com atualizações frequentes</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-star text-secondary mt-1"></i>
+                                <span class="text-white font-medium">Meets mensais exclusivos</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-star text-secondary mt-1"></i>
+                                <span class="text-white font-medium">Biblioteca de Prompts atualizada diariamente</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-star text-secondary mt-1"></i>
+                                <span class="text-white font-medium">1 Mentoria em Grupo (horários flexíveis determinados na comunidade)</span>
+                            </li>
+                        </ul>
+
+                        <a href="#" class="block w-full btn-primary text-white py-4 rounded-xl font-bold text-lg text-center transition-all">
+                            Garantir Acesso Anual
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna Lateral de Depoimentos (Ocupa 1/3 do espaço) -->
+                <div class="lg:col-span-1 bg-black/40 border border-white/5 rounded-3xl p-6 h-full max-h-[720px] flex flex-col mt-8 lg:mt-0">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-3">
+                            <i class="fa-solid fa-comments text-secondary text-2xl"></i> O que dizem
+                        </h3>
+                        <p class="text-gray-400 text-sm mt-2">Professores que já transformaram suas rotinas:</p>
+                    </div>
+                    
+                    <!-- Container com scroll (Custom Scrollbar) -->
+                    <div class="flex-1 overflow-y-auto custom-scrollbar pr-3 space-y-4">
+                        <!-- Imagem 1 (Com fallback de visualização) -->
+                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center h-[320px] w-full">
+                            <div class="absolute text-center p-4">
+                                <i class="fa-brands fa-whatsapp text-green-500 text-3xl mb-2"></i>
+                                <p class="text-gray-500 text-xs">Espaço para depoimento-1.jpg</p>
+                            </div>
+                            <img src="depoimento-1.jpg" alt="Depoimento 1" class="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
+                        </div>
+                        
+                        <!-- Imagem 2 -->
+                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center h-[320px] w-full">
+                            <div class="absolute text-center p-4">
+                                <i class="fa-brands fa-whatsapp text-green-500 text-3xl mb-2"></i>
+                                <p class="text-gray-500 text-xs">Espaço para depoimento-2.jpg</p>
+                            </div>
+                            <img src="depoimento-2.jpg" alt="Depoimento 2" class="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
+                        </div>
+
+                        <!-- Imagem 3 -->
+                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center h-[320px] w-full">
+                            <div class="absolute text-center p-4">
+                                <i class="fa-brands fa-whatsapp text-green-500 text-3xl mb-2"></i>
+                                <p class="text-gray-500 text-xs">Espaço para depoimento-3.jpg</p>
+                            </div>
+                            <img src="depoimento-3.jpg" alt="Depoimento 3" class="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
+                        </div>
+
+                        <!-- Imagem 4 -->
+                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center h-[320px] w-full">
+                            <div class="absolute text-center p-4">
+                                <i class="fa-brands fa-whatsapp text-green-500 text-3xl mb-2"></i>
+                                <p class="text-gray-500 text-xs">Espaço para depoimento-4.jpg</p>
+                            </div>
+                            <img src="depoimento-4.jpg" alt="Depoimento 4" class="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Guarantee -->
+            <div class="mt-16 flex items-center justify-center gap-6 border border-white/5 bg-black/40 p-6 rounded-2xl w-fit mx-auto">
+                <div class="w-16 h-16 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-3xl shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg text-white">Garantia Incondicional de 7 Dias</h4>
+                    <p class="text-gray-400 text-sm">Acesse o curso, teste os prompts. Se não economizar seu tempo, devolvo 100% do seu dinheiro. O risco é meu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 text-center text-gray-500 bg-darker">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <i class="fa-solid fa-lightbulb text-secondary"></i>
+                <span class="font-bold text-lg text-gray-300">Pedagog<span class="text-primary">IA</span></span>
+            </div>
+            <p class="mb-4 text-xs max-w-2xl mx-auto">Este site não faz parte do Google LLC, OpenAI, ou Meta Platforms Inc. Além disso, esse site não é endossado por nenhuma dessas empresas em nenhum aspecto. Todas as marcas registradas pertencem aos seus respectivos proprietários.</p>
+            <p class="text-sm font-semibold">&copy; 2026 PedagogIA com Diego. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
