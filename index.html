@@ -334,10 +334,10 @@
                     
                     <div class="relative w-full max-w-sm">
                         <!-- Imagem Principal (Falando/TED Style) -->
-                        <img src="perfil1.png" alt="Diego Mentor" class="w-full rounded-2xl shadow-2xl border border-white/10 relative z-20">
+                        <img src="perfil2.png" alt="Diego Mentor" class="w-full rounded-2xl shadow-2xl border border-white/10 relative z-20">
                         
                         <!-- Imagem Secundária (Sorriso/Close) -->
-                        <img src="perfil2.png" alt="Diego Sorrindo" class="absolute -bottom-10 -right-8 w-40 h-40 md:w-48 md:h-48 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] border-4 border-darker object-cover z-30">
+                        <img src="perfil1.png" alt="Diego Sorrindo" class="absolute -bottom-10 -right-8 w-40 h-40 md:w-48 md:h-48 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] border-4 border-darker object-cover z-30">
                         
                         <!-- Grafismo TED -->
                         <div class="absolute -top-6 -left-6 w-24 h-24 border-t-4 border-l-4 border-primary z-10"></div>
@@ -499,40 +499,40 @@
                     
                     <!-- Container com scroll (Custom Scrollbar) -->
                     <div class="flex-1 overflow-y-auto custom-scrollbar pr-3 space-y-4">
-                        <!-- Imagem 1 (Com fallback de visualização) -->
-                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center h-[320px] w-full">
-                            <div class="absolute text-center p-4">
+                        <!-- Imagem 1 (Sem cortes, largura total natural) -->
+                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center min-h-[100px]">
+                            <div class="absolute text-center p-4 z-0">
                                 <i class="fa-brands fa-whatsapp text-green-500 text-3xl mb-2"></i>
-                                <p class="text-gray-500 text-xs">Espaço para depoimento-1.jpg</p>
+                                <p class="text-gray-500 text-xs">depoimento-1.jpg</p>
                             </div>
-                            <img src="depoimento-1.jpg" alt="Depoimento 1" class="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
+                            <img src="depoimento-1.jpg" alt="Depoimento 1" class="relative block w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
                         </div>
                         
                         <!-- Imagem 2 -->
-                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center h-[320px] w-full">
-                            <div class="absolute text-center p-4">
+                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center min-h-[100px]">
+                            <div class="absolute text-center p-4 z-0">
                                 <i class="fa-brands fa-whatsapp text-green-500 text-3xl mb-2"></i>
-                                <p class="text-gray-500 text-xs">Espaço para depoimento-2.jpg</p>
+                                <p class="text-gray-500 text-xs">depoimento-2.jpg</p>
                             </div>
-                            <img src="depoimento-2.jpg" alt="Depoimento 2" class="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
+                            <img src="depoimento-2.jpg" alt="Depoimento 2" class="relative block w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
                         </div>
 
-                        <!-- Imagem 3 -->
-                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center h-[320px] w-full">
-                            <div class="absolute text-center p-4">
+                        <!-- Imagem 4 (Movida para a 3ª posição) -->
+                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center min-h-[100px]">
+                            <div class="absolute text-center p-4 z-0">
                                 <i class="fa-brands fa-whatsapp text-green-500 text-3xl mb-2"></i>
-                                <p class="text-gray-500 text-xs">Espaço para depoimento-3.jpg</p>
+                                <p class="text-gray-500 text-xs">depoimento-4.jpg</p>
                             </div>
-                            <img src="depoimento-3.jpg" alt="Depoimento 3" class="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
+                            <img src="depoimento-4.jpg" alt="Depoimento 4" class="relative block w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
                         </div>
 
-                        <!-- Imagem 4 -->
-                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center h-[320px] w-full">
-                            <div class="absolute text-center p-4">
+                        <!-- Imagem 3 (Vertical - Movida para o final) -->
+                        <div class="rounded-xl overflow-hidden border border-white/10 bg-[#1a1a1a] relative group flex items-center justify-center min-h-[100px]">
+                            <div class="absolute text-center p-4 z-0">
                                 <i class="fa-brands fa-whatsapp text-green-500 text-3xl mb-2"></i>
-                                <p class="text-gray-500 text-xs">Espaço para depoimento-4.jpg</p>
+                                <p class="text-gray-500 text-xs">depoimento-3.jpg</p>
                             </div>
-                            <img src="depoimento-4.jpg" alt="Depoimento 4" class="absolute inset-0 w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
+                            <img src="depoimento-3.jpg" alt="Depoimento 3" class="relative block w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300 z-10" onerror="this.style.opacity='0'">
                         </div>
                     </div>
                 </div>
